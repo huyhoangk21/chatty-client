@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BiLockAlt, BiUser } from 'react-icons/bi';
 import { GoMail } from 'react-icons/go';
 import { useMutation, gql } from '@apollo/client';
+
 import InputField from '../components/InputField';
 
 const Register = props => {

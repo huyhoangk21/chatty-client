@@ -4,7 +4,6 @@ import { useQuery, gql } from '@apollo/client';
 export const AuthContextState = createContext();
 export const AuthContextDispatch = createContext();
 
-const INITIAL_STATE = { username: null };
 const reducer = (state, action) => {
   const { type, payload } = action;
 
@@ -19,12 +18,12 @@ const reducer = (state, action) => {
 };
 
 const AuthProvider = ({ children }) => {
+  const INITIAL_STATE = { username: null };
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   useQuery(ME, {
-    onCompleted: ({ me }) => (INITIAL_STATE.username = me.username),
+    onCompleted: ({ me }) => dispatch({ type: 'LOGIN', payload: me.username }),
     onError: e => console.log(e),
   });
-
-  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
     <AuthContextDispatch.Provider value={dispatch}>
@@ -39,7 +38,6 @@ const ME = gql`
   query me {
     me {
       username
-      email
     }
   }
 `;
