@@ -12,7 +12,7 @@ const InputField = ({ children, error, ...otherProps }) => {
       <input
         {...otherProps}
         className={`w-full bg-transparent pl-8 pr-4 py-4 text-gray-800 focus:outline-none ${
-          error && 'placeholder-red-600'
+          error && 'placeholder-red-500'
         }`}
       />
     </div>
