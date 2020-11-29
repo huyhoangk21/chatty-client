@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BiLockAlt, BiUser } from 'react-icons/bi';
 import { useLazyQuery, gql } from '@apollo/client';
-import { AuthContextDispatch } from '../contexts/AuthProvider';
 import InputField from '../components/InputField';
+import { AuthContextDispatch } from '../contexts/AuthProvider';
 
 const Login = props => {
   const dispatch = useContext(AuthContextDispatch);
@@ -71,7 +71,6 @@ const LOGIN = gql`
   query login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
       username
-      email
     }
   }
 `;

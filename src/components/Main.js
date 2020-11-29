@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AddFriend from './AddFriend';
 const mockData = [
   {
     imageUrl:
@@ -101,6 +101,7 @@ const Main = () => {
   return (
     <div className='absolute top-16 bottom-16 px-4 w-full overflow-scroll'>
       {renderedFriends}
+      {/* <AddFriend /> */}
     </div>
   );
 };

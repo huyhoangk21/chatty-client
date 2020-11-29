@@ -4,7 +4,6 @@ import { AuthContextState } from '../contexts/AuthProvider';
 
 const PublicRoute = ({ component: Component, ...otherProps }) => {
   const { username } = useContext(AuthContextState);
-  console.log(username);
   return (
     <Route
       {...otherProps}
