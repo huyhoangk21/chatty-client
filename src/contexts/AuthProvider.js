@@ -16,21 +16,20 @@ const reducer = (state, action) => {
       return state;
   }
 };
+const INITIAL_STATE = { username: null };
 
 const AuthProvider = ({ children }) => {
-  const INITIAL_STATE = { username: null };
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   useQuery(ME, {
     onCompleted: ({ me }) => dispatch({ type: 'LOGIN', payload: me.username }),
-    onError: e => console.log(e),
   });
 
   return (
-    <AuthContextDispatch.Provider value={dispatch}>
-      <AuthContextState.Provider value={state}>
+    <AuthContextState.Provider value={state}>
+      <AuthContextDispatch.Provider value={dispatch}>
         {children}
-      </AuthContextState.Provider>
-    </AuthContextDispatch.Provider>
+      </AuthContextDispatch.Provider>
+    </AuthContextState.Provider>
   );
 };
 
